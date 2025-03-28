@@ -11,7 +11,10 @@ courseRouter.get('/all', getAllCourse)
 courseRouter.get('/:id', getCourseId)
 
 // Delete Course Data By Id
-courseRouter.post("/delete", deleteCourse)
+// courseRouter.post("/delete", deleteCourse)
+
+courseRouter.delete("/delete/:id", deleteCourse);
+
 
 
 export default courseRouter;
