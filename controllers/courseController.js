@@ -25,7 +25,7 @@ export const getCourseId = async (req, res) => {
     try {
 
         const courseData = await Course.findById(id)
-            .populate({ path: 'educator'})
+            .populate({ path: 'educator' })
 
         // Remove lectureUrl if isPreviewFree is false
         courseData.courseContent.forEach(chapter => {
@@ -42,4 +42,17 @@ export const getCourseId = async (req, res) => {
         res.json({ success: false, message: error.message })
     }
 
-} 
+}
+
+export const deleteCourse = async (req, res) => {
+    const { id } = req.body;
+    try {
+        const courseData = await Course.findById(id);
+
+        await courseData.deleteOne();
+        res.json({ success: true, message: "Course delete success." })
+     }
+    catch(error) {
+        console.log(error);
+    }
+}
