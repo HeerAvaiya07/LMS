@@ -44,62 +44,17 @@ export const getCourseId = async (req, res) => {
 
 }
 
-//sir code
-// export const deleteCourse = async (req, res) => {
-//     const { id } = req.body;
-//     try {
-//         const courseData = await Course.findById(id);
 
-//         await courseData.deleteOne();
-//         res.json({ success: true, message: "Course delete success." })
-//      }
-//     catch(error) {
-//         console.log(error);
-//     }
-// }
-
-
-
-
-
-
-
-// export const deleteCourse = async (req, res) => { 
-//     try {
-//         const { id } = req.params;  // Get ID from params, not body
-
-//         const courseData = await Course.findById(id);
-//         if (!courseData) {
-//             return res.status(404).json({ success: false, message: "Course not found." });
-//         }
-
-//         await courseData.deleteOne();
-//         res.json({ success: true, message: "Course deleted successfully." });
-
-//     } catch (error) {
-//         console.error("Error deleting course:", error);
-//         res.status(500).json({ success: false, message: "Error deleting course." });
-//     }
-// };
-
-
-
-
-
-export const deleteCourse = async (req, res) => { 
+export const deleteCourse = async (req, res) => {
+    const { id } = req.body;
     try {
-        const { id } = req.params;  // Get ID from params
-
         const courseData = await Course.findById(id);
-        if (!courseData) {
-            return res.status(404).json({ success: false, message: "Course not found." });
-        }
 
         await courseData.deleteOne();
-        res.json({ success: true, message: "Course deleted successfully." });
-
-    } catch (error) {
-        console.error("Error deleting course:", error);
-        res.status(500).json({ success: false, message: "Error deleting course." });
+        res.json({ success: true, message: "Course delete success." })
+     }
+    catch(error) {
+        console.log(error);
     }
-};
+}
+
